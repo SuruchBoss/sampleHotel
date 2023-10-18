@@ -16,9 +16,20 @@ class _HomeState extends State<Home> {
     return Scaffold(
         body: Column(children: [
       Container(
-          padding: EdgeInsets.all(height * 0.02),
-          color: const Color.fromARGB(178, 246, 158, 188),
-          width: width)
+        padding: EdgeInsets.only(
+            top: height * 0.1,
+            left: width * 0.05,
+            right: width * 0.05,
+            bottom: height * 0.05),
+        color: const Color.fromARGB(178, 246, 158, 188),
+        width: width,
+        child: Row(children: [
+          CircleAvatar(
+            radius: width * 0.15,
+            backgroundImage: const AssetImage("assets/peopleImg/ppl01.jpg"),
+          )
+        ]),
+      )
     ]));
   }
 }
