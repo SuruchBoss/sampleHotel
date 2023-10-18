@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.put(HomeController());
-  // final count = 0.obs;
+  final count = 0.obs;
   // final radio = 0.obs;
   // final showBadgeQueue = false.obs;
 

@@ -10,8 +10,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("Hello"),
-    );
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+        body: Column(children: [
+      Container(
+          padding: EdgeInsets.all(height * 0.02),
+          color: const Color.fromARGB(178, 246, 158, 188),
+          width: width)
+    ]));
   }
 }
