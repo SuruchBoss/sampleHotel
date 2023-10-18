@@ -20,8 +20,12 @@ People _$PeopleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$People {
-  int get id => throw _privateConstructorUsedError;
-  String get dayOfWeek => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String get firstname => throw _privateConstructorUsedError;
+  String get lastname => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get province => throw _privateConstructorUsedError;
+  bool get isDelete => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +37,13 @@ abstract class $PeopleCopyWith<$Res> {
   factory $PeopleCopyWith(People value, $Res Function(People) then) =
       _$PeopleCopyWithImpl<$Res, People>;
   @useResult
-  $Res call({int id, String dayOfWeek});
+  $Res call(
+      {int? id,
+      String firstname,
+      String lastname,
+      String address,
+      String province,
+      bool isDelete});
 }
 
 /// @nodoc
@@ -49,18 +59,38 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? dayOfWeek = null,
+    Object? id = freezed,
+    Object? firstname = null,
+    Object? lastname = null,
+    Object? address = null,
+    Object? province = null,
+    Object? isDelete = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      dayOfWeek: null == dayOfWeek
-          ? _value.dayOfWeek
-          : dayOfWeek // ignore: cast_nullable_to_non_nullable
+              as int?,
+      firstname: null == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
               as String,
+      lastname: null == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      province: null == province
+          ? _value.province
+          : province // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDelete: null == isDelete
+          ? _value.isDelete
+          : isDelete // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -72,7 +102,13 @@ abstract class _$$PeopleImplCopyWith<$Res> implements $PeopleCopyWith<$Res> {
       __$$PeopleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String dayOfWeek});
+  $Res call(
+      {int? id,
+      String firstname,
+      String lastname,
+      String address,
+      String province,
+      bool isDelete});
 }
 
 /// @nodoc
@@ -86,18 +122,38 @@ class __$$PeopleImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? dayOfWeek = null,
+    Object? id = freezed,
+    Object? firstname = null,
+    Object? lastname = null,
+    Object? address = null,
+    Object? province = null,
+    Object? isDelete = null,
   }) {
     return _then(_$PeopleImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      dayOfWeek: null == dayOfWeek
-          ? _value.dayOfWeek
-          : dayOfWeek // ignore: cast_nullable_to_non_nullable
+              as int?,
+      firstname: null == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
               as String,
+      lastname: null == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      province: null == province
+          ? _value.province
+          : province // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDelete: null == isDelete
+          ? _value.isDelete
+          : isDelete // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -105,19 +161,38 @@ class __$$PeopleImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PeopleImpl implements _People {
-  const _$PeopleImpl({required this.id, required this.dayOfWeek});
+  const _$PeopleImpl(
+      {this.id,
+      this.firstname = '',
+      this.lastname = '',
+      this.address = '',
+      this.province = '',
+      this.isDelete = false});
 
   factory _$PeopleImpl.fromJson(Map<String, dynamic> json) =>
       _$$PeopleImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String dayOfWeek;
+  @JsonKey()
+  final String firstname;
+  @override
+  @JsonKey()
+  final String lastname;
+  @override
+  @JsonKey()
+  final String address;
+  @override
+  @JsonKey()
+  final String province;
+  @override
+  @JsonKey()
+  final bool isDelete;
 
   @override
   String toString() {
-    return 'People(id: $id, dayOfWeek: $dayOfWeek)';
+    return 'People(id: $id, firstname: $firstname, lastname: $lastname, address: $address, province: $province, isDelete: $isDelete)';
   }
 
   @override
@@ -126,13 +201,21 @@ class _$PeopleImpl implements _People {
         (other.runtimeType == runtimeType &&
             other is _$PeopleImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.dayOfWeek, dayOfWeek) ||
-                other.dayOfWeek == dayOfWeek));
+            (identical(other.firstname, firstname) ||
+                other.firstname == firstname) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.province, province) ||
+                other.province == province) &&
+            (identical(other.isDelete, isDelete) ||
+                other.isDelete == isDelete));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, dayOfWeek);
+  int get hashCode => Object.hash(
+      runtimeType, id, firstname, lastname, address, province, isDelete);
 
   @JsonKey(ignore: true)
   @override
@@ -150,14 +233,27 @@ class _$PeopleImpl implements _People {
 
 abstract class _People implements People {
   const factory _People(
-      {required final int id, required final String dayOfWeek}) = _$PeopleImpl;
+      {final int? id,
+      final String firstname,
+      final String lastname,
+      final String address,
+      final String province,
+      final bool isDelete}) = _$PeopleImpl;
 
   factory _People.fromJson(Map<String, dynamic> json) = _$PeopleImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get dayOfWeek;
+  String get firstname;
+  @override
+  String get lastname;
+  @override
+  String get address;
+  @override
+  String get province;
+  @override
+  bool get isDelete;
   @override
   @JsonKey(ignore: true)
   _$$PeopleImplCopyWith<_$PeopleImpl> get copyWith =>
