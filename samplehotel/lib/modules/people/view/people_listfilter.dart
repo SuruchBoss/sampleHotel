@@ -19,7 +19,6 @@ class _PeopleListFilterState extends State<PeopleListFilter> {
 
   @override
   void initState() {
-    controller.initPeople();
     peopleListBKK = controller.getByProvince(reqProvince: "bangkok");
     peopleListPhu = controller.getByProvince(reqProvince: "phuket");
     peopleListCNX = controller.getByProvince(reqProvince: "chiangmai");
@@ -29,7 +28,6 @@ class _PeopleListFilterState extends State<PeopleListFilter> {
 
   @override
   void dispose() {
-    controller.peopleList.clear();
     super.dispose();
   }
 

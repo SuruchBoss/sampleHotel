@@ -6,7 +6,9 @@ class PeopleController extends GetxController {
 
   RxList<People> peopleList = <People>[].obs;
 
-  initPeople() {
+  @override
+  void onInit() {
+    super.onInit();
     peopleList.add(const People(
         id: 00001,
         firstname: "Jerry",
@@ -76,6 +78,7 @@ class PeopleController extends GetxController {
         isDelete: false,
         position: "Financial",
         imgPath: "assets/peopleImg/ppl03.jpg"));
+    peopleList.obs.value = getFullList();
   }
 
   RxList<People> getFullList() =>
@@ -85,4 +88,9 @@ class PeopleController extends GetxController {
       .where((c) => c.province == reqProvince && c.isDelete != true)
       .toList()
       .obs;
+
+  Future<List<People>> getData() async {
+    peopleList.obs.value = getFullList();
+    return peopleList;
+  }
 }
