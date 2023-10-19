@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:samplehotel/modules/home/controller/home_controller.dart';
 import 'package:samplehotel/modules/people/controller/people_controller.dart';
 import 'package:samplehotel/modules/people/domain/model/people.dart';
 import 'package:samplehotel/modules/people/view/people_listfilter.dart';
@@ -14,7 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
-  final controllerHome = HomeController.to;
   final controllerPeople = PeopleController.to;
 
   People hr = const People(
@@ -99,11 +96,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     height: height,
                     color: Colors.white,
                     child: const PeopleListView()),
-                Container(
-                    width: width,
-                    height: height,
-                    color: Colors.white,
-                    child: const PeopleListFilter()),
+                SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(),
+                  child: Container(
+                      width: width,
+                      height: height,
+                      color: Colors.white,
+                      child: const PeopleListFilter()),
+                ),
               ],
             ),
           ),

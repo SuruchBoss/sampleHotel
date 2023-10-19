@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:samplehotel/modules/home/controller/home_controller.dart';
 import 'package:samplehotel/modules/people/controller/people_controller.dart';
 import 'package:samplehotel/modules/people/domain/model/people.dart';
 
@@ -13,12 +12,8 @@ class PeopleListView extends StatefulWidget {
 
 class _PeopleListViewState extends State<PeopleListView> {
   final controller = PeopleController.to;
-  final controllerHome = HomeController.to;
 
   RxList<People> peopleList = <People>[].obs;
-  RxList<People> peopleListBKK = <People>[].obs;
-  RxList<People> peopleListPhu = <People>[].obs;
-  RxList<People> peopleListCNX = <People>[].obs;
 
   @override
   void initState() {
@@ -40,6 +35,7 @@ class _PeopleListViewState extends State<PeopleListView> {
     double width = MediaQuery.of(context).size.width;
 
     return ListView.builder(
+      physics: const ClampingScrollPhysics(),
       itemCount: peopleList.length,
       prototypeItem: const ListTile(
         title: Text("None"),
