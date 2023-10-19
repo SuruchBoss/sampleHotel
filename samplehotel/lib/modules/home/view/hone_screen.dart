@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:samplehotel/modules/people/domain/model/people.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,14 +9,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  People hr = const People(
+      id: 00001,
+      firstname: "Jerry",
+      lastname: "Marry",
+      address: "1234ASDF",
+      province: "bangkok",
+      isDelete: false,
+      position: "HR",
+      imgPath: "assets/peopleImg/ppl01.jpg");
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-        body: Column(children: [
-      Container(
+    Widget mainProfile({required People people}) => Container(
         padding: EdgeInsets.only(
             top: height * 0.1,
             left: width * 0.05,
@@ -26,10 +35,64 @@ class _HomeState extends State<Home> {
         child: Row(children: [
           CircleAvatar(
             radius: width * 0.15,
-            backgroundImage: const AssetImage("assets/peopleImg/ppl01.jpg"),
-          )
-        ]),
-      )
-    ]));
+            backgroundImage: AssetImage(hr.imgPath),
+          ),
+          SizedBox(
+              width: width * 0.6,
+              height: height * 0.08,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "${hr.firstname}  ${hr.lastname}",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: height * 0.03, fontWeight: FontWeight.w500),
+                  ),
+                  Text(
+                    hr.position,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: height * 0.03, fontWeight: FontWeight.w500),
+                  )
+                ],
+              ))
+        ]));
+
+    Widget tabBarMain() => SizedBox(
+        width: width,
+        height: height * 0.7,
+        child: DefaultTabController(
+          initialIndex: 0,
+          length: 2,
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: const Color.fromARGB(178, 246, 158, 188),
+              bottom: const TabBar(
+                tabs: <Widget>[
+                  Tab(
+                    icon: Icon(Icons.people_alt_outlined),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.map_outlined),
+                  ),
+                ],
+              ),
+            ),
+            body: const TabBarView(
+              children: <Widget>[
+                Center(
+                  child: Text("It's cloudy here"),
+                ),
+                Center(
+                  child: Text("It's rainy here"),
+                ),
+              ],
+            ),
+          ),
+        ));
+
+    return Scaffold(
+        body: Column(children: [mainProfile(people: hr), tabBarMain()]));
   }
 }

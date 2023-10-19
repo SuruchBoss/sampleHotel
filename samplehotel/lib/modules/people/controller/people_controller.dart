@@ -4,7 +4,6 @@ import 'package:samplehotel/modules/people/domain/model/people.dart';
 class PeopleController extends GetxController {
   static PeopleController get to => Get.find();
 
-  Rx<People> people = const People().obs;
   RxList<People> peopleList = RxList().obs as RxList<People>;
 
   initPeople() {

@@ -7,9 +7,11 @@ part 'people.g.dart';
 class People with _$People {
   const factory People({
     int? id,
+    @Default("assets/peopleImg/ppl01.jpg") String imgPath,
     @Default('') String firstname,
     @Default('') String lastname,
     @Default('') String address,
+    @Default('Employee') String position,
     @Default('') String province,
     @Default(false) bool isDelete,
   }) = _People;

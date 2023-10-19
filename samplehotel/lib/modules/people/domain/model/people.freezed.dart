@@ -21,9 +21,11 @@ People _$PeopleFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$People {
   int? get id => throw _privateConstructorUsedError;
+  String get imgPath => throw _privateConstructorUsedError;
   String get firstname => throw _privateConstructorUsedError;
   String get lastname => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  String get position => throw _privateConstructorUsedError;
   String get province => throw _privateConstructorUsedError;
   bool get isDelete => throw _privateConstructorUsedError;
 
@@ -39,9 +41,11 @@ abstract class $PeopleCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
+      String imgPath,
       String firstname,
       String lastname,
       String address,
+      String position,
       String province,
       bool isDelete});
 }
@@ -60,9 +64,11 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
   @override
   $Res call({
     Object? id = freezed,
+    Object? imgPath = null,
     Object? firstname = null,
     Object? lastname = null,
     Object? address = null,
+    Object? position = null,
     Object? province = null,
     Object? isDelete = null,
   }) {
@@ -71,6 +77,10 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      imgPath: null == imgPath
+          ? _value.imgPath
+          : imgPath // ignore: cast_nullable_to_non_nullable
+              as String,
       firstname: null == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -82,6 +92,10 @@ class _$PeopleCopyWithImpl<$Res, $Val extends People>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as String,
       province: null == province
           ? _value.province
@@ -104,9 +118,11 @@ abstract class _$$PeopleImplCopyWith<$Res> implements $PeopleCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
+      String imgPath,
       String firstname,
       String lastname,
       String address,
+      String position,
       String province,
       bool isDelete});
 }
@@ -123,9 +139,11 @@ class __$$PeopleImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? imgPath = null,
     Object? firstname = null,
     Object? lastname = null,
     Object? address = null,
+    Object? position = null,
     Object? province = null,
     Object? isDelete = null,
   }) {
@@ -134,6 +152,10 @@ class __$$PeopleImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      imgPath: null == imgPath
+          ? _value.imgPath
+          : imgPath // ignore: cast_nullable_to_non_nullable
+              as String,
       firstname: null == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -145,6 +167,10 @@ class __$$PeopleImplCopyWithImpl<$Res>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as String,
       province: null == province
           ? _value.province
@@ -163,9 +189,11 @@ class __$$PeopleImplCopyWithImpl<$Res>
 class _$PeopleImpl implements _People {
   const _$PeopleImpl(
       {this.id,
+      this.imgPath = "assets/peopleImg/ppl01.jpg",
       this.firstname = '',
       this.lastname = '',
       this.address = '',
+      this.position = 'Employee',
       this.province = '',
       this.isDelete = false});
 
@@ -174,6 +202,9 @@ class _$PeopleImpl implements _People {
 
   @override
   final int? id;
+  @override
+  @JsonKey()
+  final String imgPath;
   @override
   @JsonKey()
   final String firstname;
@@ -185,6 +216,9 @@ class _$PeopleImpl implements _People {
   final String address;
   @override
   @JsonKey()
+  final String position;
+  @override
+  @JsonKey()
   final String province;
   @override
   @JsonKey()
@@ -192,7 +226,7 @@ class _$PeopleImpl implements _People {
 
   @override
   String toString() {
-    return 'People(id: $id, firstname: $firstname, lastname: $lastname, address: $address, province: $province, isDelete: $isDelete)';
+    return 'People(id: $id, imgPath: $imgPath, firstname: $firstname, lastname: $lastname, address: $address, position: $position, province: $province, isDelete: $isDelete)';
   }
 
   @override
@@ -201,11 +235,14 @@ class _$PeopleImpl implements _People {
         (other.runtimeType == runtimeType &&
             other is _$PeopleImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.imgPath, imgPath) || other.imgPath == imgPath) &&
             (identical(other.firstname, firstname) ||
                 other.firstname == firstname) &&
             (identical(other.lastname, lastname) ||
                 other.lastname == lastname) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
             (identical(other.province, province) ||
                 other.province == province) &&
             (identical(other.isDelete, isDelete) ||
@@ -214,8 +251,8 @@ class _$PeopleImpl implements _People {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, firstname, lastname, address, province, isDelete);
+  int get hashCode => Object.hash(runtimeType, id, imgPath, firstname, lastname,
+      address, position, province, isDelete);
 
   @JsonKey(ignore: true)
   @override
@@ -234,9 +271,11 @@ class _$PeopleImpl implements _People {
 abstract class _People implements People {
   const factory _People(
       {final int? id,
+      final String imgPath,
       final String firstname,
       final String lastname,
       final String address,
+      final String position,
       final String province,
       final bool isDelete}) = _$PeopleImpl;
 
@@ -245,11 +284,15 @@ abstract class _People implements People {
   @override
   int? get id;
   @override
+  String get imgPath;
+  @override
   String get firstname;
   @override
   String get lastname;
   @override
   String get address;
+  @override
+  String get position;
   @override
   String get province;
   @override
