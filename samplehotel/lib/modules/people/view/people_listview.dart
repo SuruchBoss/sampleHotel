@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:samplehotel/modules/home/controller/home_controller.dart';
 import 'package:samplehotel/modules/people/controller/people_controller.dart';
 import 'package:samplehotel/modules/people/domain/model/people.dart';
 
@@ -12,6 +13,8 @@ class PeopleListView extends StatefulWidget {
 
 class _PeopleListViewState extends State<PeopleListView> {
   final controller = PeopleController.to;
+  final controllerHome = HomeController.to;
+
   RxList<People> peopleList = <People>[].obs;
   @override
   void initState() {

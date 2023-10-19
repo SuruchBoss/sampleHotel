@@ -96,6 +96,12 @@ class _HomeState extends State<Home> {
         ));
 
     return Scaffold(
-        body: Column(children: [mainProfile(people: hr), tabBarMain()]));
+      body: Column(children: [mainProfile(people: hr), tabBarMain()]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Null,
+        tooltip: 'Add people',
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 }
