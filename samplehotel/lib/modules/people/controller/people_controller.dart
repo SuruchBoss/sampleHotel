@@ -78,7 +78,6 @@ class PeopleController extends GetxController {
         isDelete: false,
         position: "Financial",
         imgPath: "assets/peopleImg/ppl03.jpg"));
-    peopleList.obs.value = getFullList();
   }
 
   RxList<People> getFullList() =>
@@ -89,8 +88,24 @@ class PeopleController extends GetxController {
       .toList()
       .obs;
 
-  Future<List<People>> getData() async {
+  setDelete({required int index}) {
+    print("is delete $index");
+    print(peopleList.obs.value[index].isDelete);
+    peopleList.obs.value[index] =
+        peopleList.obs.value[index].copyWith(isDelete: true);
+    print(peopleList.obs.value[index].isDelete);
     peopleList.obs.value = getFullList();
-    return peopleList;
+  }
+
+  addNewEmp() {
+    peopleList.add(const People(
+        id: 000046,
+        firstname: "Tes33t043",
+        lastname: "samp2le043",
+        address: "1322tt5abd",
+        province: "chiangmai",
+        isDelete: false,
+        position: "Financial",
+        imgPath: "assets/peopleImg/ppl03.jpg"));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:samplehotel/modules/people/controller/people_controller.dart';
 import 'package:samplehotel/modules/people/domain/model/people.dart';
 import 'package:samplehotel/modules/people/view/people_listfilter.dart';
@@ -26,6 +27,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    PeopleController.to.getFullList();
     super.initState();
   }
 
@@ -91,11 +93,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             ),
             body: TabBarView(
               children: <Widget>[
-                Container(
-                    width: width,
-                    height: height,
-                    color: Colors.white,
-                    child: const PeopleListView()),
+                Obx(
+                  () => Container(
+                      width: width,
+                      height: height,
+                      color: Colors.white,
+                      child: PeopleListView(
+                        peopleList:
+                            controllerPeople.peopleList.obs.value.toList(),
+                      )),
+                ),
                 SingleChildScrollView(
                   physics: const ClampingScrollPhysics(),
                   child: Container(
@@ -112,7 +119,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       body: Column(children: [mainProfile(people: hr), tabBarMain()]),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Null,
+        onPressed: () => PeopleController.to.addNewEmp(),
         tooltip: 'Add people',
         child: const Icon(Icons.add),
       ),
