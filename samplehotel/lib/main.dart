@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:samplehotel/modules/home/controller/home_controller.dart';
+import 'package:samplehotel/modules/people/controller/people_controller.dart';
 import 'package:samplehotel/routes/app_pages.dart';
 
 void main() {
@@ -49,4 +50,5 @@ class App extends StatelessWidget {
 
 void setupController() {
   Get.lazyPut(() => HomeController());
+  Get.lazyPut(() => PeopleController());
 }

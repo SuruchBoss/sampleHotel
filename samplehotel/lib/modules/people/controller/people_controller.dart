@@ -4,32 +4,53 @@ import 'package:samplehotel/modules/people/domain/model/people.dart';
 class PeopleController extends GetxController {
   static PeopleController get to => Get.find();
 
-  RxList<People> peopleList = RxList().obs as RxList<People>;
+  RxList<People> peopleList = <People>[].obs;
 
   initPeople() {
     peopleList.add(const People(
-        id: 12345,
-        firstname: "test01",
-        lastname: "sample01",
-        address: "1234abc",
-        province: "bangkok"));
+        id: 00002,
+        firstname: "Test02",
+        lastname: "Apple",
+        address: "1234ASDEE",
+        province: "bangkok",
+        isDelete: false,
+        position: "Developer",
+        imgPath: "assets/peopleImg/ppl01.jpg"));
 
     peopleList.add(const People(
-        id: 12346,
-        firstname: "text02",
-        lastname: "sample02",
-        address: "1235abc",
-        province: "bangkok"));
-
-    peopleList.add(const People(
-        id: 12346,
-        firstname: "text03",
+        id: 00003,
+        firstname: "Test03",
         lastname: "sample03",
-        address: "1225abd",
-        province: "chiangmai"));
+        address: "1235abc",
+        province: "Phuket",
+        isDelete: false,
+        position: "Developer",
+        imgPath: "assets/peopleImg/ppl02.jpg"));
+
+    peopleList.add(const People(
+        id: 00004,
+        firstname: "Test04",
+        lastname: "sample04",
+        address: "13225abd",
+        province: "chiangmai",
+        isDelete: true,
+        position: "Financial",
+        imgPath: "assets/peopleImg/ppl03.jpg"));
+
+    peopleList.add(const People(
+        id: 00005,
+        firstname: "Test05",
+        lastname: "sample05",
+        address: "1235abttc",
+        province: "Phuket",
+        isDelete: false,
+        position: "QA",
+        imgPath: "assets/peopleImg/ppl02.jpg"));
   }
 
-  getPeopleLis() => peopleList.obs.value;
+  RxList<People> getFullList() =>
+      peopleList.obs.value.where((c) => c.isDelete != true).toList().obs;
+
   getByProvince(String reqProvince) => peopleList.obs.value
       .where((c) => c.obs.value.province == reqProvince)
       .toList();

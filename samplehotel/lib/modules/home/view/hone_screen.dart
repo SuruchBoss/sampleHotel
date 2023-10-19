@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samplehotel/modules/people/domain/model/people.dart';
+import 'package:samplehotel/modules/people/view/people_listview.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -79,12 +80,14 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            body: const TabBarView(
+            body: TabBarView(
               children: <Widget>[
-                Center(
-                  child: Text("It's cloudy here"),
-                ),
-                Center(
+                Container(
+                    width: width,
+                    height: height,
+                    color: Colors.white,
+                    child: const PeopleListView()),
+                const Center(
                   child: Text("It's rainy here"),
                 ),
               ],
