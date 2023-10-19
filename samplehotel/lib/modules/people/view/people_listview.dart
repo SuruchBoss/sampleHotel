@@ -16,10 +16,13 @@ class _PeopleListViewState extends State<PeopleListView> {
   final controllerHome = HomeController.to;
 
   RxList<People> peopleList = <People>[].obs;
+  RxList<People> peopleListBKK = <People>[].obs;
+  RxList<People> peopleListPhu = <People>[].obs;
+  RxList<People> peopleListCNX = <People>[].obs;
+
   @override
   void initState() {
     controller.initPeople();
-
     peopleList = controller.getFullList();
 
     super.initState();

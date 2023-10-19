@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:samplehotel/modules/home/controller/home_controller.dart';
+import 'package:samplehotel/modules/people/controller/people_controller.dart';
 import 'package:samplehotel/modules/people/domain/model/people.dart';
+import 'package:samplehotel/modules/people/view/people_listfilter.dart';
 import 'package:samplehotel/modules/people/view/people_listview.dart';
 
 class Home extends StatefulWidget {
@@ -9,7 +13,10 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
+  final controllerHome = HomeController.to;
+  final controllerPeople = PeopleController.to;
+
   People hr = const People(
       id: 00001,
       firstname: "Jerry",
@@ -19,6 +26,11 @@ class _HomeState extends State<Home> {
       isDelete: false,
       position: "HR",
       imgPath: "assets/peopleImg/ppl01.jpg");
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,9 +99,11 @@ class _HomeState extends State<Home> {
                     height: height,
                     color: Colors.white,
                     child: const PeopleListView()),
-                const Center(
-                  child: Text("It's rainy here"),
-                ),
+                Container(
+                    width: width,
+                    height: height,
+                    color: Colors.white,
+                    child: const PeopleListFilter()),
               ],
             ),
           ),

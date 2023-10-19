@@ -8,6 +8,16 @@ class PeopleController extends GetxController {
 
   initPeople() {
     peopleList.add(const People(
+        id: 00001,
+        firstname: "Jerry",
+        lastname: "Marry",
+        address: "1234ASDF",
+        province: "bangkok",
+        isDelete: false,
+        position: "HR",
+        imgPath: "assets/peopleImg/ppl01.jpg"));
+
+    peopleList.add(const People(
         id: 00002,
         firstname: "Test02",
         lastname: "Apple",
@@ -22,9 +32,9 @@ class PeopleController extends GetxController {
         firstname: "Test03",
         lastname: "sample03",
         address: "1235abc",
-        province: "Phuket",
+        province: "phuket",
         isDelete: false,
-        position: "Developer",
+        position: "Purchasing",
         imgPath: "assets/peopleImg/ppl02.jpg"));
 
     peopleList.add(const People(
@@ -42,7 +52,7 @@ class PeopleController extends GetxController {
         firstname: "Test05",
         lastname: "sample05",
         address: "1235abttc",
-        province: "Phuket",
+        province: "phuket",
         isDelete: false,
         position: "QA",
         imgPath: "assets/peopleImg/ppl02.jpg"));
@@ -52,6 +62,6 @@ class PeopleController extends GetxController {
       peopleList.obs.value.where((c) => c.isDelete != true).toList().obs;
 
   getByProvince(String reqProvince) => peopleList.obs.value
-      .where((c) => c.obs.value.province == reqProvince)
+      .where((c) => c.province == reqProvince && c.isDelete != true)
       .toList();
 }
